@@ -31,9 +31,22 @@ def Crear_Menu_Admin():
         from Menu_Eliminar import Crear_Menu_Eliminar
         Crear_Menu_Eliminar()
         
+    def Copia_Seguridad():
+        import sqlite3
+        import io
+        conn = sqlite3.connect("..\\Proyecto\\Aplicacion\\proyecto_basedatos\\src\\basedatos\\proyinnovatewithproyects.db")  
+        with io.open("..\\Proyecto\\Aplicacion\\Copias_De_Seguridad\\backupdatabase_dump.sql", "w") as p: 
+            for line in conn.iterdump(): 
+                p.write('%s\n' % line)
+        conn.close()
+
+        
     Administrar_Admin_Menu = tk.Button(Menu_Admin,text="ADMINISTRAR", font=15, bg= "#f4a020", width=30, command=Open_Admin_Administrar).place(x=450, y=200)
     Actuarizar_Admin_Menu = tk.Button(Menu_Admin,text="ACTUALIZAR USUARIOS", font=15, bg= "#f4a020", width=30, command=Open_Menu_Actualizar).place(x=450, y=300)
     Eliminar_Admin_Menu = tk.Button(Menu_Admin,text="ELIMINAR USUARIOS", font=15, bg= "#f4a020", width=30, command=Open_Menu_Eliminar).place(x=450, y=400)
-
+    Generar_Copia_Seguridad = tk.Button(Menu_Admin, text="GENERAR COPIA DE SEGURIDAD", font=15, bg= "#f4a020", width=30, command=Copia_Seguridad).place(x=450, y=500)
+    
+    
+    
     Menu_Admin.mainloop()
 Crear_Menu_Admin()
