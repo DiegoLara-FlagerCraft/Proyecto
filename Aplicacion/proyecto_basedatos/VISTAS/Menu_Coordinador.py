@@ -43,6 +43,9 @@ def Crear_Menu_Coordinador():
         
     def Open_Eliminar_Iniciativa():
         Menu_Coordinador.destroy()
+        from Eliminar_Iniciativa import Crear_Eliminar_Iniciativa
+        Crear_Eliminar_Iniciativa()
+        
         
     Administrar_Coordinador_Menu = tk.Button(Menu_Coordinador,text="ADMINISTRAR", font=15, bg= "#f4a020", width=30, command=Open_Coordinador_Administrar).place(x=450, y=200)
     Iniciativas_Coordinador_Menu = tk.Button(Menu_Coordinador,text="INICIATIVAS", font=15, bg= "#f4a020", width=30, command=Open_Coordinador_Iniciativas).place(x=450, y=250)

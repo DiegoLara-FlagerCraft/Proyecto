@@ -63,10 +63,14 @@ def Open_Home():
 
     # CONTENIDO
 
+    def Ingresar_como_Invitado():
+        root.destroy()
+        from Iniciativa_Tecnologica import Crear_Iniciativa_Tecnologica
+        Crear_Iniciativa_Tecnologica()
 
     labelTexto.place(x=180, y=360)
-    buttonIniciativa = tk.Button(Home, text="SUBE TU INICIATIVA TECNOLOGICA", font= "20", bg="#f4a020")
-    buttonIniciativa.place(x=500, y=690)
+    Ingresar_Invitado = tk.Button(Home, text="INGRESAR COMO INVITADO", font= "20", bg="#f4a020", command=Ingresar_como_Invitado)
+    Ingresar_Invitado.place(x=500, y=690)
     logo = tk.PhotoImage(file= "..\\Proyecto\\Aplicacion\\proyecto_basedatos\\src\\IMAGENES\\logo.png")
     lbl_img = tk.Label(Home, image = logo)
     lbl_img.place(x=560, y=100)
