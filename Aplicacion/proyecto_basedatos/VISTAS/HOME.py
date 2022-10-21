@@ -120,6 +120,8 @@ def Open_Registro_Roles():
     Administrador_btn = tk.Button(Registro_roles, text = "ADMINISTRADOR", font=20, command=Open_Registro_Usuario).place(x=575, y=450)
 
     Coordinador_btn = tk.Button(Registro_roles, text = "COORDINADOR", font=20, command=Open_Registro_Usuario).place(x=930, y=450)
+    
+    Empresario_btn = tk.Button(Registro_roles, text="EMPRESARIO", font=20, command=Open_Registro_Usuario).place(x=580, y=550)
 
     Volver_btn = tk.Button(Registro_roles, text = "VOLVER", font=20, command=Volver_Home).place(x=1200, y=5)
 
@@ -170,6 +172,11 @@ def Open_Inicio_Roles():
         from Login_Usuarios_Coordinador import Crear_Login_Usuarios_Coordinador
         Crear_Login_Usuarios_Coordinador()
 
+    def Open_Login_Empresario():
+        Inicio_roles.destroy()
+        from Login_Empresario import Crear_Login_Usuarios_Empresario
+        Crear_Login_Usuarios_Empresario()
+
     def Volver_Home():
         Inicio_roles.destroy()
         from HOME import Open_Home
@@ -183,6 +190,8 @@ def Open_Inicio_Roles():
 
     Coordinador_btn = tk.Button(Inicio_roles, text = "COORDINADOR", font=20, command=Open_Login_Usuarios_Coordinador)
     Coordinador_btn.place(x=930, y=450)
+    
+    Empresario_btn = tk.Button(Inicio_roles, text="EMPRESARIO", font=20, command=Open_Login_Empresario).place(x=580, y=550)
 
     Volver_btn = tk.Button(Inicio_roles, text = "VOLVER", font=20, command=Volver_Home).place(x=1200, y=5)
     Inicio_roles.mainloop()
