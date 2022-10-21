@@ -19,8 +19,8 @@ def Crear_Admin_Administrar():
     FontText_Admin_Admi = tkFont.Font(size = 15, weight= "bold")
     FontText_Admin_Admi2 = tkFont.Font(size = 13)
     Administrar_Admin_Admi = tk.Label(Administrador_Administrar, text="ADMINISTRAR USUARIOS:",font=FontText_Admin_Admi,background='#7EADB0').place(x=300, y=150)
-    Buscar_Admin_Admi = tk.Label(Administrador_Administrar, text="BUSCAR USUARIO\nPOR MEDIO DE ID:",background='#7EADB0', font=FontText_Admin_Admi2).place(x=300, y=220)
-    TexBox_Buscar_Admin_Admi = tk.Entry(Administrador_Administrar, width=100,background="#D9D9D9").place(x=490, y=230)
+    Buscar_Admin_Admi = tk.Label(Administrador_Administrar, text="BUSCAR USUARIO\nPOR MEDIO DE EL CORREO:",background='#7EADB0', font=FontText_Admin_Admi2).place(x=300, y=220)
+    TexBox_Buscar_Admin_Admi = tk.Entry(Administrador_Administrar, width=100,background="#D9D9D9").place(x=550, y=230)
     Generar_Admin_Admi = tk.Label(Administrador_Administrar, text="GENERAR REPORTE:",font=FontText_Admin_Admi,background='#7EADB0').place(x=300, y=400)
 
     # BOTONES

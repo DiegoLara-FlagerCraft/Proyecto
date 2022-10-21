@@ -1,3 +1,4 @@
+from fileinput import filename
 import tkinter as tk
 from tkinter import scrolledtext as st
 import sys
@@ -28,15 +29,16 @@ class Aplicacion:
         sys.exit(0)
 
     def guardar(self):
-        nombrearchivo = fd.asksaveasfilename(initialdir= "C:\\Proyecto\\Aplicacion\\archivos_txt_guardados", title = "Guardar Como", filetypes= (("txt files","*.txt"),("todos los archivos","*,*")))
+        nombrearchivo = fd.asksaveasfilename(initialdir= "..\\Proyecto\\Aplicacion\\archivos_txt_guardados", title = "Guardar Como", filetypes= (("txt files","*.txt"),("todos los archivos","*,*")))
         if nombrearchivo != '':
             archivo1 = open(nombrearchivo, "w", encoding="utf-8")
             archivo1.write(self.scrolledtext1.get("1.0", tk.END))
             archivo1.close()
             mb.showinfo("INFORMACION", "LOS DATOS FUERON GUARDADOS EN EL ARCHIVO")
+            
     
     def abrir(self):
-        nombrearchivo = fd.askopenfilename(initialdir= "C:\\Proyecto\\Aplicacion\\archivos_txt_guardados", title = "Seleccione el Archivo", filetypes= (("txt files","*.txt"),("todos los archivos","*,*")))
+        nombrearchivo = fd.askopenfilename(initialdir= "..\\Proyecto\\Aplicacion\\archivos_txt_guardados", title = "Seleccione el Archivo", filetypes= (("txt files","*.txt"),("todos los archivos","*,*")))
         if nombrearchivo != '':
             archivo1 = open(nombrearchivo, "r", encoding="utf-8")
             contenido = archivo1.read()

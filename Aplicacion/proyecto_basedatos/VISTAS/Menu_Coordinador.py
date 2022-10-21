@@ -31,8 +31,26 @@ def Crear_Menu_Coordinador():
         from Coordinador_Permisos_Lider import Crear_Coor_Permisos_Lider
         Crear_Coor_Permisos_Lider()
         
+    def Open_Menu_Actualizar():
+        Menu_Coordinador.destroy()
+        from Menu_Actualizar import Crear_Menu_Actualizar
+        Crear_Menu_Actualizar()
+            
+    def Open_Menu_Eliminar():
+        Menu_Coordinador.destroy()
+        from Menu_Eliminar import Crear_Menu_Eliminar
+        Crear_Menu_Eliminar()
+        
+    def Open_Eliminar_Iniciativa():
+        Menu_Coordinador.destroy()
+        
     Administrar_Coordinador_Menu = tk.Button(Menu_Coordinador,text="ADMINISTRAR", font=15, bg= "#f4a020", width=30, command=Open_Coordinador_Administrar).place(x=450, y=200)
-    Iniciativas_Coordinador_Menu = tk.Button(Menu_Coordinador,text="INICIATIVAS", font=15, bg= "#f4a020", width=30, command=Open_Coordinador_Iniciativas).place(x=450, y=300)
-    Permisos_Coordinador_Menu = tk.Button(Menu_Coordinador,text="PERMISOS", font=15, bg= "#f4a020", width=30, command=Open_Coordinador_Permisos).place(x=450, y=400)
+    Iniciativas_Coordinador_Menu = tk.Button(Menu_Coordinador,text="INICIATIVAS", font=15, bg= "#f4a020", width=30, command=Open_Coordinador_Iniciativas).place(x=450, y=250)
+    Permisos_Coordinador_Menu = tk.Button(Menu_Coordinador,text="PERMISOS", font=15, bg= "#f4a020", width=30, command=Open_Coordinador_Permisos).place(x=450, y=300)
+    Actuarizar_Coordinador_Menu = tk.Button(Menu_Coordinador,text="ACTUALIZAR USUARIOS", font=15, bg= "#f4a020", width=30, command=Open_Menu_Actualizar).place(x=450, y=350)
+    Eliminar_Coordinador_Menu = tk.Button(Menu_Coordinador,text="ELIMINAR USUARIOS", font=15, bg= "#f4a020", width=30, command=Open_Menu_Eliminar).place(x=450, y=400)
+    Eliminar_Iniciativas_Coordinador_Menu = tk.Button(Menu_Coordinador, text="ELIMINAR INICIATIVAS", font=15, bg="#f4a020", width=30, command=Open_Eliminar_Iniciativa).place(x=450, y=450)
+
 
     Menu_Coordinador.mainloop()
+Crear_Menu_Coordinador()

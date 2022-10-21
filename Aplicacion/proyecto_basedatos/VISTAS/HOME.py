@@ -7,6 +7,7 @@ from tkinter import ttk
 from tkinter import *
 from turtle import color
 import tkinter.font as tkFont
+from tkinter import scrolledtext as st
 
 root = tk.Tk()
 root.config(width=1360, height=768)
@@ -18,16 +19,39 @@ Home.config(bg= '#7EADB0')
 #OPEN HOME
 
 def Open_Home():
+    def Open_Terminos_Condiciones():
+        ventana1 = tk.Tk()
+        ventana1.title("TERMINOS Y CONDICIONES")
+        scrolledtext1 = st.ScrolledText(ventana1, width=80, height=30)
+        scrolledtext1.grid(column = 0, row = 0, padx = 10, pady = 10)
+        nombrearchivo = "..\\Proyecto\\Aplicacion\\proyecto_basedatos\\VISTAS\\TERMINOS.txt"
+        archivo1 = open(nombrearchivo, "r", encoding="utf-8")
+        contenido = archivo1.read()
+        archivo1.close()
+        scrolledtext1.delete("3.0", tk.END)
+        scrolledtext1.insert("1.0", contenido)
+
+    def Open_Contacto():
+        ventana2 = tk.Tk()
+        ventana2.title("TERMINOS Y CONDICIONES")
+        scrolledtext1 = st.ScrolledText(ventana2, width=80, height=30)
+        scrolledtext1.grid(column = 0, row = 0, padx = 10, pady = 10)
+        nombrearchivo = "..\\Proyecto\\Aplicacion\\proyecto_basedatos\\VISTAS\\CONTACTO.txt"
+        archivo1 = open(nombrearchivo, "r", encoding="utf-8")
+        contenido = archivo1.read()
+        archivo1.close()
+        scrolledtext1.delete("3.0", tk.END)
+        scrolledtext1.insert("1.0", contenido)
+        
+        
     buttonRegistrar = tk.Button(Home, text="REGISTRARSE", command=Open_Registro_Roles)
     buttonRegistrar.place(x=1200, y=20)
     buttonIniciar = tk.Button(Home, text="INICIAR SESION", command=Open_Inicio_Roles)
     buttonIniciar.place(x=1090, y=20)
-    buttonTerminos = tk.Button(Home, text="TERMINOS Y CONDICIONES")
+    buttonTerminos = tk.Button(Home, text="TERMINOS Y CONDICIONES", command=Open_Terminos_Condiciones)
     buttonTerminos.place(x=915, y=20)
-    buttonInformacion = tk.Button(Home, text="POLITICAS DE PRIVACIDAD")
-    buttonInformacion.place(x=745, y=20)
-    buttonContacto = tk.Button(Home, text="CONTACTO")
-    buttonContacto.place(x=655, y=20)
+    buttonContacto = tk.Button(Home, text="CONTACTO" , command= Open_Contacto)
+    buttonContacto.place(x=825, y=20)
     labelTitulo = tk.Label(Home, text="BIENVENIDO A INNOVATE WITH PROYECTS",font=10,background='#7EADB0')
     labelTitulo.place(x=20, y=20)
     labelTexto = tk.Label(Home, text="INNOVATE WITH PROYECTS es una aplicacion que te permite como estudiante subir tus iniciativas tecnologicas \n\n"
@@ -43,7 +67,7 @@ def Open_Home():
     labelTexto.place(x=180, y=360)
     buttonIniciativa = tk.Button(Home, text="SUBE TU INICIATIVA TECNOLOGICA", font= "20", bg="#f4a020")
     buttonIniciativa.place(x=500, y=690)
-    logo = tk.PhotoImage(file= "C:\\Proyecto\\Aplicacion\\proyecto_basedatos\\src\\IMAGENES\\logo.png")
+    logo = tk.PhotoImage(file= "..\\Proyecto\\Aplicacion\\proyecto_basedatos\\src\\IMAGENES\\logo.png")
     lbl_img = tk.Label(Home, image = logo)
     lbl_img.place(x=560, y=100)
     root.mainloop()
@@ -54,7 +78,7 @@ def Open_Registro_Roles():
     Open_Registro_Roles = tk.Toplevel()
     root.destroy()
         
-    # CONTENIDO
+    # CONTENIDO 
 
     Registro_roles = tk.Tk()
     Registro_roles.config(width=1360, height=768, bg= '#7EADB0')
@@ -65,13 +89,13 @@ def Open_Registro_Roles():
 
     # IMAGENES
 
-    estudiante = tk.PhotoImage(file= "C:\\Proyecto\\Aplicacion\\proyecto_basedatos\\src\\IMAGENES\\estudiante.png")
+    estudiante = tk.PhotoImage(file= "..\\Proyecto\\Aplicacion\\proyecto_basedatos\\src\\IMAGENES\\estudiante.png")
     lbl_estu = tk.Label(Registro_roles, image = estudiante).place(x=200, y=200)
 
-    admin = tk.PhotoImage(file= "C:\\Proyecto\\Aplicacion\\proyecto_basedatos\\src\\IMAGENES\\Administrador.png")
+    admin = tk.PhotoImage(file= "..\\Proyecto\\Aplicacion\\proyecto_basedatos\\src\\IMAGENES\\Administrador.png")
     lbl_admin = tk.Label(Registro_roles, image = admin).place(x=550, y=200)
 
-    coordinador = tk.PhotoImage(file= "C:\\Proyecto\\Aplicacion\\proyecto_basedatos\\src\\IMAGENES\\coordinador.png")
+    coordinador = tk.PhotoImage(file= "..\\Proyecto\\Aplicacion\\proyecto_basedatos\\src\\IMAGENES\\coordinador.png")
     lbl_coordinador = tk.Label(Registro_roles, image = coordinador).place(x=900, y=200)
 
     # BOTONES
@@ -86,11 +110,18 @@ def Open_Registro_Roles():
         from Registro_Usuario import Crear_Registro_Usuario
         Crear_Registro_Usuario
 
+    def Volver_Home():
+        Registro_roles.destroy()
+        from HOME import Open_Home
+        Open_Home()
+        
     Estudiante_btn = tk.Button(Registro_roles, text = "ESTUDIANTE", font=20, command=Open_Registro_Estudiante).place(x=240, y=450)
 
     Administrador_btn = tk.Button(Registro_roles, text = "ADMINISTRADOR", font=20, command=Open_Registro_Usuario).place(x=575, y=450)
 
     Coordinador_btn = tk.Button(Registro_roles, text = "COORDINADOR", font=20, command=Open_Registro_Usuario).place(x=930, y=450)
+
+    Volver_btn = tk.Button(Registro_roles, text = "VOLVER", font=20, command=Volver_Home).place(x=1200, y=5)
 
     Registro_roles.mainloop()
     
@@ -110,15 +141,15 @@ def Open_Inicio_Roles():
 
     # IMAGENES
 
-    estudiante = tk.PhotoImage(file= "C:\\Proyecto\\Aplicacion\\proyecto_basedatos\\src\\IMAGENES\\estudiante.png")
+    estudiante = tk.PhotoImage(file= "..\\Proyecto\\Aplicacion\\proyecto_basedatos\\src\\IMAGENES\\estudiante.png")
     lbl_estu = tk.Label(Inicio_roles, image = estudiante)
     lbl_estu.place(x=200, y=200)
 
-    admin = tk.PhotoImage(file= "C:\\Proyecto\\Aplicacion\\proyecto_basedatos\\src\\IMAGENES\\Administrador.png")
+    admin = tk.PhotoImage(file= "..\\Proyecto\\Aplicacion\\proyecto_basedatos\\src\\IMAGENES\\Administrador.png")
     lbl_admin = tk.Label(Inicio_roles, image = admin)
     lbl_admin.place(x=550, y=200)
 
-    coordinador = tk.PhotoImage(file= "C:\\Proyecto\\Aplicacion\\proyecto_basedatos\\src\\IMAGENES\\coordinador.png")
+    coordinador = tk.PhotoImage(file= "..\\Proyecto\\Aplicacion\\proyecto_basedatos\\src\\IMAGENES\\coordinador.png")
     lbl_coordinador = tk.Label(Inicio_roles, image = coordinador)
     lbl_coordinador.place(x=900, y=200)
 
@@ -139,6 +170,11 @@ def Open_Inicio_Roles():
         from Login_Usuarios_Coordinador import Crear_Login_Usuarios_Coordinador
         Crear_Login_Usuarios_Coordinador()
 
+    def Volver_Home():
+        Inicio_roles.destroy()
+        from HOME import Open_Home
+        Open_Home()
+
     Estudiante_btn = tk.Button(Inicio_roles, text = "ESTUDIANTE", font=20, command=Open_Login_Usuarios_Lider)
     Estudiante_btn.place(x=240, y=450)
 
@@ -147,7 +183,8 @@ def Open_Inicio_Roles():
 
     Coordinador_btn = tk.Button(Inicio_roles, text = "COORDINADOR", font=20, command=Open_Login_Usuarios_Coordinador)
     Coordinador_btn.place(x=930, y=450)
+
+    Volver_btn = tk.Button(Inicio_roles, text = "VOLVER", font=20, command=Volver_Home).place(x=1200, y=5)
     Inicio_roles.mainloop()
         
-
 Open_Home()

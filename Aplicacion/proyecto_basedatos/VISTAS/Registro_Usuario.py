@@ -13,6 +13,7 @@ def Crear_Registro_Usuario():
     from tkcalendar import DateEntry
     import sqlite3 as lite
     from tkinter import messagebox
+    from tkinter import scrolledtext as st
 
     Registro_Usuario = tk.Tk()
     Registro_Usuario.config(width=1360, height=768, bg= '#7EADB0')
@@ -41,6 +42,8 @@ def Crear_Registro_Usuario():
     Contrase_Usu = tk.Label(Registro_Usuario, text= "CONTRASENA:",font=15,background='#7EADB0').place(x=300, y=355)
     Textbox_Contrase_Usu = tk.Entry(Registro_Usuario,background='#D9D9D9', width=100, show="*")
     Textbox_Contrase_Usu.place(x=450, y=360) 
+    
+    Terminos_Usu = tk.Label(Registro_Usuario, text= "Al registrarse en el aplicativo acepta los terminos y condiciones del mismo", font=10, background='#7EADB0').place(x=300, y=400)
 
 
 
@@ -52,7 +55,7 @@ def Crear_Registro_Usuario():
         Textbox_Contrase_Usu.delete(0, END)
 
     def Registrar_Usuario():
-        con = lite.connect("C:\\Proyecto\\Aplicacion\\proyecto_basedatos\\src\\basedatos\\proyinnovatewithproyects.db")
+        con = lite.connect("..\\Proyecto\\Aplicacion\\proyecto_basedatos\\src\\basedatos\\proyinnovatewithproyects.db")
         with con:
             cursor = con.cursor()
         cursor.execute("INSERT INTO Persona (Id_Persona, perso_Nombre, perso_Apellido, perso_Fecha_nacimiento, perso_Correo, perso_Contrase) VALUES (?,?,?,?,?,?)", (None, TexBox_Nombre_Usu.get(), TexBox_Apellido_Usu.get(), Calendar_Usuario.get_date(), TexBox_Correo_Usu.get(), Textbox_Contrase_Usu.get(),))
@@ -62,9 +65,29 @@ def Crear_Registro_Usuario():
         TexBox_Apellido_Usu.delete(0, END)
         TexBox_Correo_Usu.delete(0, END)
         Textbox_Contrase_Usu.delete(0, END)
+        messagebox.showinfo("USUARIO", "USUARIO REGISTRADO EXITOSAMENTE")
 
-    Registrarbtn_Usu = tk.Button(text="REGISTRARSE", font=15, bg= "#f4a020", command=Registrar_Usuario).place(x=500, y=400)
-    Borrarbtn_Usu = tk.Button(text="BORRAR", font=15, bg= "#f4a020", command=Borrar_Campos).place(x=700, y=400)
+    def Volver_Home():
+        Registro_Usuario.destroy()
+        from HOME import Open_Home
+        Open_Home()
+        
+    def Open_Terminos_Condiciones():
+        ventana1 = tk.Tk()
+        ventana1.title("TERMINOS Y CONDICIONES")
+        scrolledtext1 = st.ScrolledText(ventana1, width=80, height=30)
+        scrolledtext1.grid(column = 0, row = 0, padx = 10, pady = 10)
+        nombrearchivo = "..\\Proyecto\\Aplicacion\\proyecto_basedatos\\VISTAS\\TERMINOS.txt"
+        archivo1 = open(nombrearchivo, "r", encoding="utf-8")
+        contenido = archivo1.read()
+        archivo1.close()
+        scrolledtext1.delete("3.0", tk.END)
+        scrolledtext1.insert("1.0", contenido)
+
+    Registrarbtn_Usu = tk.Button(text="REGISTRARSE", font=15, bg= "#f4a020", command=Registrar_Usuario).place(x=500, y=500)
+    Borrarbtn_Usu = tk.Button(text="BORRAR", font=15, bg= "#f4a020", command=Borrar_Campos).place(x=700, y=500)
+    Volver_btn = tk.Button(Registro_Usuario, text = "VOLVER", font=20, command=Volver_Home).place(x=1200, y=5)
+    Terminos_btn = tk.Button(Registro_Usuario, text = "TERMINOS Y CONDICIONES", font=5, command=Open_Terminos_Condiciones).place(x=510, y=450)
 
 
     Registro_Usuario.mainloop()
