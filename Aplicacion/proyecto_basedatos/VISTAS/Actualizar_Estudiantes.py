@@ -22,7 +22,7 @@ def Crear_Actualizar_Estudiante():
     Registro_estudiantes.title("ACTUALIZAR ESTUDIANTES")
     BienvenidaLabel_Estu = tk.Label(Registro_estudiantes, text="FORMULARIO\nACTUALIZAR\nESTUDIANTES",font=10,background='#7EADB0',justify=LEFT).place(x=20, y=20)
     FontLabel_Estu = tkFont.Font(size = 20, weight= "bold")
-    TextoLabel_Estu = tk.Label(Registro_estudiantes,text="ACTUARIZAR ESTUDIANTE\nRELLENE LOS DATOS",font=FontLabel_Estu,background='#7EADB0',justify=CENTER).place(x=450, y=50)
+    TextoLabel_Estu = tk.Label(Registro_estudiantes,text="ACTUALIZAR ESTUDIANTE\nRELLENE LOS DATOS",font=FontLabel_Estu,background='#7EADB0',justify=CENTER).place(x=450, y=50)
 
 
     # FORMULARIO

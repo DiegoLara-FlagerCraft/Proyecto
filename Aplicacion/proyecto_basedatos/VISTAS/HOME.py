@@ -33,7 +33,7 @@ def Open_Home():
 
     def Open_Contacto():
         ventana2 = tk.Tk()
-        ventana2.title("TERMINOS Y CONDICIONES")
+        ventana2.title("CONTACTO")
         scrolledtext1 = st.ScrolledText(ventana2, width=80, height=30)
         scrolledtext1.grid(column = 0, row = 0, padx = 10, pady = 10)
         nombrearchivo = "..\\Proyecto\\Aplicacion\\proyecto_basedatos\\VISTAS\\CONTACTO.txt"

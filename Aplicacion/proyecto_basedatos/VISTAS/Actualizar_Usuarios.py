@@ -76,3 +76,4 @@ def Crear_Actualizar_Usuario():
     Borrarbtn_Usu = tk.Button(text="BORRAR", font=15, bg= "#f4a020", command=Borrar_Campos).place(x=700, y=450)
 
     Registro_Usuario.mainloop()
+Crear_Actualizar_Usuario()
